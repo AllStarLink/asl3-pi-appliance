@@ -1,0 +1,39 @@
+name: 'Make and Publish Pkgs'
+run-name: Package ${{ github.event.repository.name }}(${{ github.ref_name }}) for ${{ inputs.os }}/${{ inputs.arch }}, Publish to ${{ inputs.deployment-environment }}
+on: 
+  workflow_dispatch:
+    inputs:
+      os:
+        description: 'Debian Release Version'
+        type: choice
+        options:
+          - bookworm
+          - bullseye
+      gh-rel:
+        description: 'GitHub Release Tag (for debs)'
+        type: string
+      aptly-repo:
+        description: 'Aptly Repository Stream'
+        type: choice
+        options:
+          - beta
+          - devel
+      arch:
+        description: 'Platform Architecture (Do not change)'
+        type: choice
+        options:
+          - amd64
+jobs:
+  make-packages:
+    uses: AllStarLink/asl3-pi-appliance/.github/workflows/ephemeral_ec2_run-this.yml@develop
+    with:
+      run-this: ./builder/dockerbuild.sh -a ${{ inputs.arch	}} -o ${{ inputs.os }} --gh-rel ${{ inputs.gh-rel }}
+      arch: ${{ inputs.arch == 'armhf' && 'arm64' || inputs.arch == 'aarch64' && 'arm64' || inputs.arch == 'amd64' && 'x86_64' || inputs.arch == 'riscv64' && 'x86_64' || inputs.arch }}
+      artifact-path: '/actions-runner/_work/asl3-pi-appliance/_debs/'
+    secrets: inherit
+  publish-packages:
+    uses: AllStarLink/asl3-pi-appliance/.github/workflows/publish_artifacts_to_aptly.yml@develop
+    with:
+      repo-name: asl3-${{ inputs.aptly-repo }}
+    secrets: inherit
+    needs: make-packages
