@@ -25,20 +25,26 @@ do_configure() {
     fi
 
 	# Services to start on boot
-	systemctl enable apache2
-	systemctl enable allmon3
-	systemctl enable asl3-asterisk
-	systemctl enable avahi-daemon
-	systemctl enable firewalld
-	systemctl enable cockpit
+	deb-systemd-invoke enable apache2
+	deb-systemd-invoke enable allmon3
+	deb-systemd-invoke enable asl3-asterisk
+	deb-systemd-invoke enable firewalld
+	deb-systemd-invoke enable cockpit
 
-	# Change default firealld zone
-	if [ $(firewall-cmd --state) ]; then
-		systemctl reload firewalld
+	# Change default firewalld zone
+	if [ "$(firewall-cmd --state)" == "running" ]; then
+		deb-systemd-invoke reload firewalld
 		firewall-cmd --set-default-zone=allstarlink
 	else
 		firewall-offline-cmd --set-default-zone=allstarlink
 	fi
+
+	# Setup avahi-daemon
+	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
+	perl -pi -e 's/^publish-hinfo=[A-Za-z]+\s?$/publish-hinfo=yes\n/' /etc/avahi/avahi-daemon.conf
+	deb-systemd-invoke enable avahi-daemon
+	deb-systemd-invoke restart avahi-daemon
+
 
 	# Rewrite the motd
 	cat - > /etc/motd <<EOF
@@ -54,6 +60,7 @@ do_configure() {
     the Cockpit web console or by using the command
     'sudo firewall-cmd -p PORT:TYPE'
  * For help visit https://community.allstarlink.org
+
 EOF
 
 
