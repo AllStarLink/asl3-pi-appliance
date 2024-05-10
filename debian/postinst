@@ -15,6 +15,10 @@
 # for details, see https://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+    . /usr/share/apache2/apache2-maintscript-helper
+fi
+
 do_configure() {
 
 	#Apache Management
@@ -26,12 +30,12 @@ do_configure() {
 	# Services to start on boot
 	deb-systemd-invoke enable apache2
 	deb-systemd-invoke enable allmon3
-	deb-systemd-invoke enable asl3-asterisk
+	deb-systemd-invoke enable asterisk
 	deb-systemd-invoke enable firewalld
-	deb-systemd-invoke enable cockpit
+	deb-systemd-invoke enable cockpit.socket
 
 	# Change default firewalld zone
-	if [ "$(firewall-cmd --state)" == "running" ]; then
+	if [ "$(firewall-cmd --state)" = "running" ]; then
 		deb-systemd-invoke reload firewalld
 		firewall-cmd --set-default-zone=allstarlink
 	else
