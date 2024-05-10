@@ -17,7 +17,6 @@
 
 do_configure() {
 
-}
 	#Apache Management
     if [ -e /usr/sbin/apache2 ]; then
         apache2_invoke enmod ssl || exit $?
@@ -62,7 +61,7 @@ do_configure() {
  * For help visit https://community.allstarlink.org
 
 EOF
-
+}
 
 case "$1" in
     configure)

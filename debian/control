@@ -11,8 +11,8 @@ Rules-Requires-Root: binary-targets
 
 Package: asl3-pi-appliance
 Architecture: all
-Depends: ${misc:Depends}, cockpit cockpit-networkmanager \
- cockpit-packagekit cockpit-sosreport \
- cockpit-storaged cockpit-system cockpit-ws python3-serial firewalld
+Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
+ cockpit-packagekit, cockpit-sosreport, 
+ cockpit-storaged, cockpit-system, cockpit-ws, python3-serial, firewalld
 Description: AllStarLink Pi Appliance tools and configs
 	Not for use outside of ASL Pi appliances
