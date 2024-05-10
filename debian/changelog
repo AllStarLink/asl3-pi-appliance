@@ -1,6 +1,5 @@
-asl3-update-nodelist (1.2-1) unstable; urgency=medium
+asl3-pi-appliance (1.0-1) unstable; urgency=medium
 
-  * Create /var/lib/asterisk
-  * Remove package dependency for asl3-asterisk for multiplatform
+  * Initial package
 
- -- Jason McCormick <jason@mfamily.org>  Sat, 06 Jan 2024 16:27:21 -0500
+ -- Jason McCormick <jason@mfamily.org>  Fri, 10 May 2024 16:30:24 -0400

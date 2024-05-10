@@ -18,6 +18,10 @@ BIN_FILES = sa818
 BIN_INSTALLABLES = $(patsubst %, $(DESTDIR)$(bindir)/%, $(BIN_FILES))
 
 ETC_FILES = \
+	avahi/services/ssh.service \
+	avahi/services/http.service \
+	avahi/services/https.service \
+	avahi/services/cockpit.service \
 	firewalld/services/astmgr.xml \
 	firewalld/services/iax2.xml \
 	firewalld/services/rtcm.xml \
