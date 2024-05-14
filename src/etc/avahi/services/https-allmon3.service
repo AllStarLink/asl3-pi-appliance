@@ -4,6 +4,6 @@
 <name replace-wildcards="yes">%h Allmon3</name>
 <service>
 <type>_https._tcp</type>
-<port>9090</port>
+<port>443</port>
 </service>
 </service-group>
