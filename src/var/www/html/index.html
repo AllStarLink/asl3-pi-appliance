@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Repeater Controller with VoIP linking for Ham Radio">
+		<meta name="keywords" content="allstar, allstarlink, ham radio, repeaters, voip, app_rpt, asterisk">
+		<meta name="author" content="Jon Welfringer, WB6OZD">
+		<link rel="icon" href="https://allstarlink.org/favicon.ico?v=2">
+		<link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./allstar.css">
+
+		<!-- Node home page tip - If you wish to change your home page to perform an automatic redirect,
+			you can do that by uncommenting the single line below.  Edit the time (0) and url to navigate to.	
+			Additionally, you can change the home page contents by publishing your own pages to /var/www/html.
+		-->
+		<!--	<meta http-equiv="refresh" content="0; url=/allmon3" />	-->
+		
+		<title>ASL3 Node</title>
+		
+	</head>
+
+<!--	TO DO:  Change link references to the asl-manual public page.	-->
+	
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4">
+						<a class="navbar-brand" href="https://allstarlink.org/" target="_blank">
+							<img src="./allstar-logo-small.png" alt="AllStar Logo"></a>
+					</div>
+					<div class="col-sm-8">
+					  <h1>Welcome to AllStarLink!</h1>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h3>This is your new ASL3 Node</h3>
+					<p>
+						AllStarLink is proud to announce ASL3, the next generation of AllStar repeater and hotspot software. ASL3 has been redesigned to run on Asterisk LTS (Long Term Support), the latest operating systems, and modern hardware. The update from Asterisk version 1.4 to version 20 implements over 15 years of bug fixes, security improvements and enhancements.
+						</br></br>
+						Of course AllStar benefits from running on Asterisk 20. But we didn't stop there. Our team has worked hard over the last two plus years to bring you many AllStar improvements. Our code is available to all. You may read all about the many new features, improvements and how to install on our new ASL3 Manual.
+					</p>
+				</div>
+
+				<div class="col-sm-4">
+					<h3>Help Support ASL</h3>
+					<p>
+						The implementation of this system and its monthly upkeep is very costly. Any monetary help that you can and wish to give will be much appreciated. Allstarlink Inc. is a 501(c)(3) non-profit organization.
+					</p>
+
+					<div class="allstar-center">
+						<a class="dbox-donation-button" style="background: #5c9118 url(https://donorbox.org/images/red_logo.png) no-repeat 37px;color: #fff;text-decoration: none;font-family: Verdana,sans-serif;display: inline-block;font-size: 16px;padding: 15px 38px;padding-left: 75px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;box-shadow: 0 1px 0 0 #1f5a89;text-shadow: 0 1px rgba(0, 0, 0, 0.3);" href="https://donorbox.org/allstarlink-donations?amount=24&amp;default_interval=a&amp;utm_campaign=donate_4&amp;utm_source=asl" target="_blank">Donate</a>
+					</div>
+				</div>
+			</div>
+
+			</br>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading allstar-panel-head">
+							AllStarLink ASL3 User Guide
+							<button class="btn btn-primary" style="float:right;padding:revert;" onclick=" window.open('https://repo.allstarlink.org/protected/asl-manual','_blank')">Open</button>
+						</div>
+
+						<div class="panel-body">
+							<p>
+								ASL3 includes an all new user guide that covers installation, updates, configuration and customization.  The user guide is your go-to source for the new ASL3 release.
+								</br></br>
+								You can also reference the existing <a href="https://wiki.allstarlink.org/wiki/Main_Page" target="_blank">AllStarLink Wiki</a> for many other ASL related topics.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading allstar-panel-head">
+							AllStarLink Community Forum
+							<button class="btn btn-primary" style="float:right;padding:revert;" onclick="window.open('https://community.allstarlink.org/','_blank')">Open</button>
+						</div>
+
+						<div class="panel-body">
+							<p>
+								AllStarLink Community is both an email server and forum software. You can use it in either or both modes.  
+								</br></br>
+								The Community is the best place to ask questions that you don't find answered elsewhere and is a great place to engage with your fellow AllStar users.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading allstar-panel-head">
+							Allmon3 Node Monitoring & Management
+							<button class="btn btn-primary" style="float:right;padding:revert;" onclick=" window.open('/allmon3','_blank')">Open</button>
+						</div>
+
+						<div class="panel-body">
+							<p>
+								Allmon is the standard web-based montitoring and management for the AllStarLink application. Allmon3 is the next generation of the venerable Allmon2 that is rewritten for performance, scalability, and responsiveness.
+								</br></br>
+								<b>Note</b> that while the default installation of Allmon3 has already been done, you will still need to set the initial password for the Allmon3 default user.  You can use the terminal available in Cockpit to login to the operating system to perform this step.  
+								</br></br>
+								Please see the <a href="https://github.com/AllStarLink/allmon3?tab=readme-ov-file#configure-allmon" target="_blank">Configure Allmon</a> section of the Allmon3 Git repository for assitance in performing this step.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading allstar-panel-head">
+							Cockpit Console - Node OS Management
+							<button class="btn btn-primary" style="float:right;padding:revert;" 
+									onclick=" window.open(window.location.protocol + '//' + window.location.hostname + ':9090','_blank')">
+								Open
+							</button>
+						</div>
+
+						<div class="panel-body">
+							<p>
+								<a href="https://cockpit-project.org/" target="_blank">Cockpit</a> console is a web-based graphical interface to your node. By using it, you can perform system administration tasks, such as inspecting and controlling services, managing storage, configuring networks and firewalls, analyzing network issues, and inspecting logs. Of course, it's also very handy for administering Asterisk on your AllStarLink Pi Appliance!
+								</br></br>
+								Note that you will use the operating system credentials created during the installation process of your node.
+								</br></br>
+								Please see the <a href="https://repo.allstarlink.org/protected/asl-manual/pi/cockpit-basics/" target="_blank">ASL3 User Guide</a> for further information on the use of Cockpit.
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+			
+			</br></br>
+			<div class="container clearfix" style="text-align: center;">
+				<span>If you wish to customize this home page, you can find the files located at /var/www/html.</span>
+			</div>
+
+			</div>
+			
+		</div>
+			
+		<footer class="footer allstar-footer navbar-fixed-bottom">
+			<div class="container clearfix" style="text-align: center;">
+				<span>© 2024 AllStarLink Inc.</span>
+			</div>
+		</footer>
+			  
+	</body>
+</html>
