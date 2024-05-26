@@ -18,19 +18,20 @@ BIN_FILES = sa818
 BIN_INSTALLABLES = $(patsubst %, $(DESTDIR)$(bindir)/%, $(BIN_FILES))
 
 ETC_FILES = \
+	avahi/services/http-allmon3.service \
 	avahi/services/ssh.service \
-	avahi/services/http.service \
-	avahi/services/https.service \
-	avahi/services/cockpit.service \
+	avahi/services/https-allmon3.service \
+	avahi/services/https-cockpit.service \
 	firewalld/services/astmgr.xml \
 	firewalld/services/iax2.xml \
 	firewalld/services/rtcm.xml \
 	firewalld/zones/allstarlink.xml
+
 ETC_INSTALLABLES = $(patsubst %, $(DESTDIR)$(sysconfdir)/%, $(ETC_FILES))
 
+OTHERS = $(DESTDIR)/var/asl-backups
 
-INSTALLABLES = $(BIN_INSTALLABLES) $(ETC_INSTALLABLES)
-
+INSTALLABLES = $(BIN_INSTALLABLES) $(ETC_INSTALLABLES) $(OTHERS)
 
 default:
 	@echo This does nothing 
@@ -43,6 +44,9 @@ $(DESTDIR)$(bindir)/%: src/usr/bin/%
 $(DESTDIR)$(sysconfdir)/%: src/etc/%
 	install -D -m 0644  $< $@
 
+$(DESTDIR)/var/asl-backups:
+	mkdir -p $@
+	chmod 0644 $@
 
 deb:	debclean debprep
 	debchange --distribution stable --package $(PKGNAME) \
