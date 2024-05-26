@@ -1,6 +1,22 @@
 @import url(//fonts.googleapis.com/css?family=Roboto);
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
+.pad-revert {
+	padding: revert;
+}
+.donor-box {
+	background: #5c9118 url(https://donorbox.org/images/red_logo.png) no-repeat 35px;
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px 30px;
+	padding-left: 70px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 0 #1f5a89;
+}
+
 td.passwd {
   color: transparent;
 }
