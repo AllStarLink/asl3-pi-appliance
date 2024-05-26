@@ -46,7 +46,7 @@ $(DESTDIR)$(sysconfdir)/%: src/etc/%
 
 $(DESTDIR)/var/asl-backups:
 	mkdir -p $@
-	chmod 0644 $@
+	chmod 0755 $@
 
 deb:	debclean debprep
 	debchange --distribution stable --package $(PKGNAME) \
