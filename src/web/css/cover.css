@@ -38,4 +38,11 @@ header {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  border: all;
+  border-width: 3px;
+  border-color: black;
+}
+
+.card-cover:hover {
+	border-color: #5c9118;
 }
