@@ -7,7 +7,7 @@ JS_DIR = js
 
 ROOT_FILES = $(wildcard *.html)
 CSS_FILES = $(wildcard $(CSS_DIR)/*.css)
-IMG_FILES = $(wildcard $(IMG_DIR)/*.png)
+IMG_FILES = $(wildcard $(IMG_DIR)/*)
 JS_FILES = $(wildcard $(JS_DIR)/*.js)
 
 CSS_INSTALLABLES = $(patsubst $(CSS_DIR)/%, $(WEBROOT)/$(CSS_DIR)/%, $(CSS_FILES))
