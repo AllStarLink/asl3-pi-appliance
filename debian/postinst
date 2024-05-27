@@ -67,7 +67,7 @@ EOF
 
 	# Customize /etc/os-release
 	/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
-	deb-systemd-invoke restart cockpit.service
+	deb-systemd-invoke restart cockpit
 }
 
 case "$1" in
