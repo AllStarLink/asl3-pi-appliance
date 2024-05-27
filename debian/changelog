@@ -1,7 +1,8 @@
-asl3-pi-appliance (1.2-1) stable; urgency=medium
+asl3-pi-appliance (1.2-5) stable; urgency=medium
 
   * Reorganize package
   * Complete centralized launch pad
+  * Brand cockpit
 
  -- Jason McCormick <jason@mfamily.org>  Mon, 27 May 2024 09:35:40 -0400
 
