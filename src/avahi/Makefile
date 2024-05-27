@@ -9,8 +9,6 @@ INSTALLABLES = $(AVAHI_INSTALLABLES)
 
 .PHONY:	install
 install:	$(INSTALLABLES)
-	@echo $(AVAHI_SERVICES)
-	@echo $(AVAHI_INSTALLABLES)
 
 $(DESTDIR)$(avahisvcs)/%:	%
 	install -D -m 0644  $< $@
