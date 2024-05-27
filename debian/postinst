@@ -48,7 +48,6 @@ do_configure() {
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
 
-
 	# Rewrite the motd
 	cat - > /etc/motd <<EOF
 
@@ -65,6 +64,9 @@ do_configure() {
  * For help, visit https://community.allstarlink.org
 
 EOF
+
+	# Customize /etc/os-release
+	/usr/share/cockpit/debian-AllStarLink/fix-os-release
 }
 
 case "$1" in
