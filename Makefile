@@ -1,48 +1,42 @@
 #
 # Build variables
 #
-SRCNAME = asl3-pi-appliance
-PKGNAME = $(SRCNAME)
-RELVER = 1.1
-DEBVER = 1
-RELPLAT ?= deb$(shell lsb_release -rs 2> /dev/null)
+SRCNAME 	= asl3-pi-appliance
+PKGNAME 	= $(SRCNAME)
+RELVER 		= 1.1
+DEBVER 		= 1
+RELPLAT 	?= deb$(shell lsb_release -rs 2> /dev/null)
 
-#
-# Other variables
-#
-prefix ?= /usr
-bindir ?= $(prefix)/bin
-sysconfdir ?= /etc
+prefix          ?= /usr
+docdir			?= $(prefix)/share/doc/$(PKGNAME)
 
-BIN_FILES = sa818
-BIN_INSTALLABLES = $(patsubst %, $(DESTDIR)$(bindir)/%, $(BIN_FILES))
+BUILDABLES = \
+	avahi \
+	bin \
+	firewalld \
+	web
 
-ETC_FILES = \
-	avahi/services/http-allmon3.service \
-	avahi/services/ssh.service \
-	avahi/services/https-allmon3.service \
-	avahi/services/https-cockpit.service \
-	firewalld/services/astmgr.xml \
-	firewalld/services/iax2.xml \
-	firewalld/services/rtcm.xml \
-	firewalld/zones/allstarlink.xml
+#ifdef DESTDIR
+FULL_DESTDIR = $(shell readlink -f $(DESTDIR))
+#endif
 
-ETC_INSTALLABLES = $(patsubst %, $(DESTDIR)$(sysconfdir)/%, $(ETC_FILES))
+ROOT_FILES = LICENSE README.md
+ROOT_INSTALLABLES = $(patsubst %, $(DESTDIR)$(docdir)/%, $(ROOT_FILES))
 
 OTHERS = $(DESTDIR)/var/asl-backups
 
-INSTALLABLES = $(BIN_INSTALLABLES) $(ETC_INSTALLABLES) $(OTHERS)
+INSTALLABLES = $(ROOT_INSTALLABLES) $(OTHERS)
 
 default:
-	@echo This does nothing 
+	@echo This does nothing because of dpkg-buildpkg - use 'make install'
 
 install: $(INSTALLABLES)
+	@echo FULL_DESTDIR=$(FULL_DESTDIR)
+	@echo ROOT_INSTALLABLES=$(ROOT_INSTALLABLES)
+	$(foreach dir, $(BUILDABLES), $(MAKE) -C src/$(dir) install DESTDIR=$(FULL_DESTDIR);)
 
-$(DESTDIR)$(bindir)/%: src/usr/bin/%
-	install -D -m 0755  $< $@
-
-$(DESTDIR)$(sysconfdir)/%: src/etc/%
-	install -D -m 0644  $< $@
+$(DESTDIR)$(docdir)/%:	%
+	install -D -m 0644 $< $@
 
 $(DESTDIR)/var/asl-backups:
 	mkdir -p $@
