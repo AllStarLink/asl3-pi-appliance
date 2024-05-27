@@ -3,7 +3,7 @@ sysconfdir		?= /etc
 exec_prefix		?= $(prefix)
 bin_prefix		?= $(exec_prefix)/bin
 cockpit_etc		?= $(sysconfdir)/cockpit
-cockpit_brand	?= $(prefix)/usr/share/cockpit/branding/debian-AllStarLink
+cockpit_brand	?= $(prefix)/share/cockpit/branding/debian-AllStarLink
 
 ETC_FILES = $(wildcard etc/*.conf)
 ETC_INSTALLABLES = $(patsubst etc/%, $(DESTDIR)$(cockpit_etc)/%, $(ETC_FILES))
