@@ -1,0 +1,34 @@
+body.login-pf {
+  background-color: rgba(0, 0, 0, 0);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-image: linear-gradient(rgb(115, 181, 31), rgb(92, 145, 24));
+  background-size: auto;
+  background-origin: padding-box;
+  background-clip: border-box;
+  border-color: #5c9118;
+
+}
+
+#badge {
+/* width: 80px;
+/  height: 80px; */
+    background-image: url("logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#brand {
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+
+#brand:before {
+    content: "${VARIANT}";
+}
+
+#index-brand:before {
+    content: "${VARIANT}";
+}

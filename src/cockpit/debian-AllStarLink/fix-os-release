@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Sets additional variables in /etc/os-release for Cockpit branding
+
+OS_REL=/etc/os-release
+
+if grep -qE '^VARIANT=' ${OS_REL}; then
+	perl -pi -e 's/^VARIANT=.*$/VARIANT=\"AllStarLink System Manager\"/' ${OS_REL}
+else
+	echo VARIANT=\"AllStarLink System Manager\" >> ${OS_REL}
+fi
+
+if grep -qE '^VARIANT_ID=' ${OS_REL}; then
+	perl -pi -e 's/^VARIANT_ID=.*$/VARIANT_ID=\"AllStarLink\"/' ${OS_REL}
+else
+	echo VARIANT_ID=\"AllStarLink\" >> ${OS_REL}
+fi
+
+perl -pi -e 's/^HOME_URL=.*$/HOME_URL=\"https:\/\/allstarlink.org\"/' ${OS_REL}
+perl -pi -e 's/^BUG_REPORT_URL=.*$/BUG_REPORT_URL=\"https:\/\/github.com\/AllStarLink\/asl3-pi-appliance\/\"/' ${OS_REL}
+perl -pi -e 's/^SUPPORT_URL=.*$/SUPPORT_URL=\"https:\/\/community.allstarlink.org\"/' ${OS_REL}
+
