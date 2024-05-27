@@ -45,6 +45,7 @@ do_configure() {
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
 	perl -pi -e 's/^publish-hinfo=[A-Za-z]+\s?$/publish-hinfo=yes\n/' /etc/avahi/avahi-daemon.conf
+	rm -f /etc/avahi/services/http.service /etc/avahi/services/https.service /etc/avahi/services/cockpit.service
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
 
