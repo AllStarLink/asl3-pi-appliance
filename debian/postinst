@@ -69,6 +69,13 @@ EOF
 	# Customize /etc/os-release
 	/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
 	deb-systemd-invoke restart cockpit
+
+	# Try to fix the swapfile
+	if grep -vqE '^CONF_SWAPSIZE' /etc/dphys-swapfile; then
+		echo "CONF_SWAPSIZE=512" >> /etc/dphys-swapfile
+		/usr/sbin/dphys-swapfile setup
+		/usr/sbin/dphys-swapfile swapon
+	fi
 }
 
 case "$1" in
