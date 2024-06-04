@@ -76,6 +76,9 @@ EOF
 		/usr/sbin/dphys-swapfile setup
 		/usr/sbin/dphys-swapfile swapon
 	fi
+
+	# Enable the Pi UART as /dev/serial0
+	/usr/bin/asl-enable-pi-serial
 }
 
 case "$1" in
