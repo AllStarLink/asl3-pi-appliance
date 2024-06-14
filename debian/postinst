@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/bash -e
 # postinst script for allmon3
 #
 # see: dh_installdeb(1)
@@ -14,6 +14,8 @@
 #          <conflicting-package> <version>
 # for details, see https://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
+#
+set -e
 
 if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
     . /usr/share/apache2/apache2-maintscript-helper
