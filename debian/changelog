@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.6-1) stable; urgency=medium
+
+  * Fix logic for dphys-swapfile breaking pi builds 
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 14 Jun 2024 17:36:40 -0400
+
 asl3-pi-appliance (1.5-1) stable; urgency=medium
 
   * Ensure enough swapspace exists via postinst
