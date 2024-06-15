@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.6.3-1) stable; urgency=medium
+
+  * Enable no-store header to break Safari caching
+
+ -- Jason McCormick <jason@mfamily.org>  Sat, 15 Jun 2024 17:06:41 -0400
+
 asl3-pi-appliance (1.6.2-1) stable; urgency=medium
 
   * Change postinst to /usr/bin/bash 
