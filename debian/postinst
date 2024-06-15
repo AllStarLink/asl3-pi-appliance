@@ -27,6 +27,8 @@ do_configure() {
     if [ -e /usr/sbin/apache2 ]; then
         apache2_invoke enmod ssl || exit $?
         apache2_invoke ensite default-ssl || exit $?
+		apache2_invoke enmod headers || exit $?
+		apache2_invoke enconf nocache || exit $?
     fi
 
 	# Services to start on boot
