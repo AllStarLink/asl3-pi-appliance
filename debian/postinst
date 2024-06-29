@@ -93,10 +93,12 @@ EOF
 
 case "$1" in
     configure)
-	do_configure
+		do_configure
     ;;
-
-    abort-upgrade|abort-remove|abort-deconfigure)
+		triggered)
+		/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
+	;;
+	    abort-upgrade|abort-remove|abort-deconfigure)
     ;;
 
     *)
