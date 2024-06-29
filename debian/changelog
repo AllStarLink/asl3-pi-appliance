@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.7.1-1) stable; urgency=medium
+
+  * Trigger on changes to /etc/os-release to reapply customizations
+
+ -- Jason McCormick <jason@mfamily.org>  Sat, 29 Jun 2024 19:30:23 -0400
+
 asl3-pi-appliance (1.7-1) stable; urgency=medium
 
   * Add "sa818-menu", a [whiptail] menu that wraps the "sa818" command 
