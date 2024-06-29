@@ -56,7 +56,7 @@ do_configure() {
 	# Rewrite the motd
 	cat - > /etc/motd <<EOF
 
-            Welcome to AlLStarLink v3
+            Welcome to AllStarLink v3
 
  * A CLI menu is accessible by typing 'sudo asl-menu'
  * The Asterisk CLI is accessible by typing 'sudo asterisk -rv'
