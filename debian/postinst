@@ -56,7 +56,7 @@ do_configure() {
 	# Rewrite the motd
 	cat - > /etc/motd <<EOF
 
-            Welcome to AlLStarLink v3
+            Welcome to AllStarLink v3
 
  * A CLI menu is accessible by typing 'sudo asl-menu'
  * The Asterisk CLI is accessible by typing 'sudo asterisk -rv'
@@ -93,10 +93,12 @@ EOF
 
 case "$1" in
     configure)
-	do_configure
+		do_configure
     ;;
-
-    abort-upgrade|abort-remove|abort-deconfigure)
+		triggered)
+		/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
+	;;
+	    abort-upgrade|abort-remove|abort-deconfigure)
     ;;
 
     *)
