@@ -42,8 +42,11 @@ do_configure() {
 	if [ "$(firewall-cmd --state)" = "running" ]; then
 		deb-systemd-invoke reload firewalld
 		firewall-cmd --set-default-zone=allstarlink
+		firewall-cmd --zone=allstarlink --permanent --add-service=echolink
+		firewall-cmd --zone=allstarlink --add-service=echolink
 	else
 		firewall-offline-cmd --set-default-zone=allstarlink
+		firewall-offline-cmd --zone=allstarlink --add-service=echolink
 	fi
 
 	# Setup avahi-daemon
