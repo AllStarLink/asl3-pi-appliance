@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Echolink</short>
+  <description>Echolink ports</description>
+  <port port="5198-5199" protocol="udp"/>
+</service>
+
