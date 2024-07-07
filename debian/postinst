@@ -75,7 +75,6 @@ EOF
 
 	# Customize /etc/os-release
 	/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
-	deb-systemd-invoke restart cockpit
 
 	# Undo the previous swap manipulations
 	perl -pi -e 's/^CONF_SWAPSIZE/##CONF_SWAPSIZE/g' /etc/dphys-swapfile
