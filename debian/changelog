@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.7.3-3) stable; urgency=medium
+
+  * Don't restart cockpit in postinst
+
+ -- Jason McCormick <jason@mfamily.org>  Sat, 06 Jul 2024 20:31:52 -0400
+
 asl3-pi-appliance (1.7.3-2) stable; urgency=medium
 
   * Enable echolink in debian postinst 
