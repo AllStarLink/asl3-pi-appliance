@@ -84,10 +84,10 @@ EOF
 	if [[ $RAMK -lt 512000 ]]; then
 		if ! grep -q -E '^CONF_SWAPFACTOR' /etc/dphys-swapfile; then
 			echo "CONF_SWAPFACTOR=4" >> /etc/dphys-swapfile
+			echo "NOTICE: changed /etc/dphys-swapfile; reboot required!"
 		fi
 	fi
 	deb-systemd-invoke enable dphys-swapfile
-	deb-systemd-invoke restart dphys-swapfile
 
 	# Enable the Pi UART as /dev/serial0
 	/usr/bin/asl-enable-pi-serial
