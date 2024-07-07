@@ -3,8 +3,8 @@
 #
 SRCNAME 	= asl3-pi-appliance
 PKGNAME 	= $(SRCNAME)
-RELVER 		= 1.7.3
-DEBVER 		= 3
+RELVER 		= 1.7.4
+DEBVER 		= 1
 RELPLAT 	?= deb$(shell lsb_release -rs 2> /dev/null)
 
 prefix          ?= /usr

@@ -1,3 +1,10 @@
+asl3-pi-appliance (1.7.4-1) stable; urgency=medium
+
+  * Don't restart dphys-swapfile either
+  * Prep for prod release
+
+ -- Jason McCormick <jason@mfamily.org>  Sun, 07 Jul 2024 08:37:32 -0400
+
 asl3-pi-appliance (1.7.3-3) stable; urgency=medium
 
   * Don't restart cockpit in postinst
