@@ -13,6 +13,7 @@ Package: asl3-pi-appliance
 Architecture: all
 Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
  cockpit-packagekit, cockpit-sosreport, 
- cockpit-storaged, cockpit-system, cockpit-ws, python3-serial, firewalld
+ cockpit-storaged, cockpit-system, cockpit-ws, python3-serial, firewalld,
+ asl3, asl3-menu, asl3-update-nodelist, allmon3, vim-nox
 Description: AllStarLink Pi Appliance tools and configs
 	Not for use outside of ASL Pi appliances
