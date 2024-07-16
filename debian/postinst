@@ -91,11 +91,10 @@ EOF
 		fi
 		deb-systemd-invoke enable dphys-swapfile
 	
-		# Enable the Pi UART as /dev/serial0
 	fi
 
-	# If this looks like a Pi 
-	PLATFORM=$(grep -E '^Model' /proc/cpuinfo | awk '{print $3$4}' RaspberryPi)
+	# Enable the Pi UART as /dev/serial0 if this looks like a Pi
+	PLATFORM=$(grep -E '^Model' /proc/cpuinfo | awk '{print $3$4}')
 	if [ "${PLATFORM}" == "RaspberryPi" ]; then
 		/usr/bin/asl-enable-pi-serial
 	fi
