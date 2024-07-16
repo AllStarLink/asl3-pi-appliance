@@ -76,21 +76,29 @@ EOF
 	# Customize /etc/os-release
 	/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
 
-	# Undo the previous swap manipulations
-	perl -pi -e 's/^CONF_SWAPSIZE/##CONF_SWAPSIZE/g' /etc/dphys-swapfile
+	# Customize dphys-swapfile if its installed
+	if [ -f /etc/dphys-swapfile ]; then
+		# Undo the previous swap manipulations
+		perl -pi -e 's/^CONF_SWAPSIZE/##CONF_SWAPSIZE/g' /etc/dphys-swapfile
 
-	# Increase the swapfile default sizes on systems with < 512M
-	RAMK=$(getconf -a | grep PAGES | awk 'BEGIN {total = 1} {if (NR == 1 || NR == 3) total *=$NF} END {print total / 1024}')
-	if [[ $RAMK -lt 512000 ]]; then
-		if ! grep -q -E '^CONF_SWAPFACTOR' /etc/dphys-swapfile; then
-			echo "CONF_SWAPFACTOR=4" >> /etc/dphys-swapfile
-			echo "NOTICE: changed /etc/dphys-swapfile; reboot required!"
+		# Increase the swapfile default sizes on systems with < 512M
+		RAMK=$(getconf -a | grep PAGES | awk 'BEGIN {total = 1} {if (NR == 1 || NR == 3) total *=$NF} END {print total / 1024}')
+		if [[ $RAMK -lt 512000 ]]; then
+			if ! grep -q -E '^CONF_SWAPFACTOR' /etc/dphys-swapfile; then
+				echo "CONF_SWAPFACTOR=4" >> /etc/dphys-swapfile
+				echo "NOTICE: changed /etc/dphys-swapfile; reboot required!"
+			fi
 		fi
+		deb-systemd-invoke enable dphys-swapfile
+	
+		# Enable the Pi UART as /dev/serial0
 	fi
-	deb-systemd-invoke enable dphys-swapfile
 
-	# Enable the Pi UART as /dev/serial0
-	/usr/bin/asl-enable-pi-serial
+	# If this looks like a Pi 
+	PLATFORM=$(grep -E '^Model' /proc/cpuinfo | awk '{print $3$4}' RaspberryPi)
+	if [ "${PLATFORM}" == "RaspberryPi" ]; then
+		/usr/bin/asl-enable-pi-serial
+	fi
 }
 
 case "$1" in
