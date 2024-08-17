@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.8.0-1) stable; urgency=medium
+
+  * Relocate sa818 and sa818-menu to asl3 package
+
+ -- Jason McCormick <jason@mfamily.org>  Fri, 16 Aug 2024 17:05:19 -0400
+
 asl3-pi-appliance (1.7.6-2) stable; urgency=medium
 
   * Add guardrails around Pi-specific changes 
