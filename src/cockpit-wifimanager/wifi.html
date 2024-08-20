@@ -10,26 +10,26 @@
         <section>
             <div>
                 <div>
-                    <button id="wifi-scan">Scan for WiFi Networks</button>
                     <span id="result"></span>
                 </div>
                 <div>
-                    <div id="output">
+                    <div id="output"></div>
                 </div>
             </div>
         </section>
-	
-		<section>
-			<div style="margin-top: 10px;">
-				<label for="wifi-ssid">Network Name:</label>
-				<input type="text" id="wifi-ssid" name="wifi-ssid" length=30></input><br>
-				<label for="wifi-key">Network Password:</label>
-				<input type="password" id="wifi-key" name="wifi-key" length=30></input><br>
-				<button id="set-wifi">Save Network</button>
-			<div>
-		</section>	
+
+        <section>
+            <div style="margin-top: 10px;">
+                <label for="wifi-ssid">Network Name:</label>
+                <select id="wifi-ssid" name="wifi-ssid"></select><br>
+                <label for="wifi-key">Network Password:</label>
+                <input type="password" id="wifi-key" name="wifi-key" length=30></input><br>
+                <button id="set-wifi">Save Network</button>
+            </div>
+        </section>
     </main>
 
     <script src="wifi.js"></script>
 </body>
 </html>
+
