@@ -1,6 +1,9 @@
 const address = document.getElementById("address");
 const output = document.getElementById("output");
 const result = document.getElementById("result");
+const ssidDropdown = document.getElementById("wifi-ssid");
+const passwordInput = document.getElementById("wifi-key");
+const saveButton = document.getElementById("set-wifi");
 
 let accumulatedOutput = "";  // Variable to accumulate output
 
@@ -23,7 +26,7 @@ function wifi_scan_run() {
 
 function wifi_scan_success() {
     result.style.color = "green";
-    result.textContent = "WiFi scan successful";
+    result.textContent = "WiFi Scan successful";
 }
 
 function wifi_scan_fail() {
@@ -44,8 +47,13 @@ function wifi_scan_output(data) {
         // Split the line into columns
         const columns = line.split(/\s+/);
 
-        // Assuming SSID is in the 2nd column (index 1)
-        const ssid = columns[1];  // Adjust index if necessary based on your output
+        // Determine SSID location based on whether the first column is empty
+        let ssid;
+        if (columns[0] === '*' || columns[0] === '') {
+            ssid = columns[2];  // SSID is in the 3rd column (index 2)
+        } else {
+            ssid = columns[1];  // SSID is in the 2nd column (index 1)
+        }
 
         if (ssid && ssid !== "--") {  // Ensure SSID is valid and not "--"
             ssidSet.add(ssid);
@@ -53,7 +61,6 @@ function wifi_scan_output(data) {
     }
 
     // Populate the dropdown with unique SSIDs
-    const ssidDropdown = document.getElementById("wifi-ssid");
     ssidDropdown.innerHTML = "";  // Clear existing options
 
     ssidSet.forEach(ssid => {
@@ -69,6 +76,43 @@ function wifi_scan_output(data) {
     }
 }
 
+function save_network() {
+    const ssid = ssidDropdown.value;
+    const password = passwordInput.value;
+
+    if (!ssid || !password) {
+        result.style.color = "red";
+        result.textContent = "Please select a network and enter a password.";
+        return;
+    }
+
+    // Disable the Save button while processing
+    saveButton.disabled = true;
+    saveButton.textContent = "Saving...";
+
+    // Create or modify the connection using nmcli
+    /* global cockpit */
+    cockpit.spawn([
+        "sudo", "nmcli", "dev", "wifi", "connect", ssid, "password", password
+    ])
+    .then(() => {
+        result.style.color = "green";
+        result.textContent = `Network ${ssid} saved successfully.`;
+    })
+    .catch((error) => {
+        result.style.color = "red";
+        result.textContent = `Failed to save network: ${error.message}`;
+    })
+    .finally(() => {
+        // Re-enable the Save button and restore its text
+        saveButton.disabled = false;
+        saveButton.textContent = "Save Network";
+    });
+}
+
 // Run the Wi-Fi scan when the page loads
 document.addEventListener("DOMContentLoaded", wifi_scan_run);
+
+// Connect the Save button to the save_network function
+saveButton.addEventListener("click", save_network);
 
