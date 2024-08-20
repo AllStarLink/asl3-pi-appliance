@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pinger</title>
+    <meta charset="utf-8">
+    <script src="../base1/cockpit.js"></script>
+</head>
+<body>
+    <main tabindex="-1">
+        <section>
+            <div>
+                <div>
+                    <button id="wifi-scan">Scan for WiFi Networks</button>
+                    <span id="result"></span>
+                </div>
+                <div>
+                    <div id="output">
+                </div>
+            </div>
+        </section>
+	
+		<section>
+			<div style="margin-top: 10px;">
+				<label for="wifi-ssid">Network Name:</label>
+				<input type="text" id="wifi-ssid" name="wifi-ssid" length=30></input><br>
+				<label for="wifi-key">Network Password:</label>
+				<input type="password" id="wifi-key" name="wifi-key" length=30></input><br>
+				<button id="set-wifi">Save Network</button>
+			<div>
+		</section>	
+    </main>
+
+    <script src="wifi.js"></script>
+</body>
+</html>

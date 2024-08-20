@@ -1,0 +1,10 @@
+{
+    "version": 0,
+
+    "tools": {
+        "wifimgr": {
+            "label": "Wifi manager",
+            "path": "wifi.html"
+        }
+    }
+}
