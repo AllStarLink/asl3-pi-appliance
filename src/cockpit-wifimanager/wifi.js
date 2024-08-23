@@ -13,7 +13,7 @@ function wifi_scan_run() {
 }
 
 function wifi_scan_fail() {
-	result.innerHTML += `<span class="wifi-scan-error">WiFi scan failed</scan>`;
+	result.innerHTML += `<span class="wifi-scan-error">WiFi scan failed</span>`;
 }
 
 function wifi_scan_output(data) {
