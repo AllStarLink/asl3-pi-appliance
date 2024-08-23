@@ -34,7 +34,7 @@ function set_wifi_run() {
 }
 
 function set_wifi_fail() {
-	setresult.innerHTML += `<span class="wifi-scan-error">WiFi set failed</scan>`;
+	setresult.innerHTML += `<span class="wifi-scan-error">WiFi set failed</span>`;
 }
 
 function set_wifi_output(data) {
