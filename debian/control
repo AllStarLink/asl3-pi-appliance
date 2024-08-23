@@ -15,6 +15,6 @@ Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
  cockpit-packagekit, cockpit-sosreport, 
  cockpit-storaged, cockpit-system, cockpit-ws, python3-serial, firewalld,
  asl3 (>= 3.3.0), asl3-menu, asl3-update-nodelist, allmon3, vim-nox, 
- avahi-daemon, python3-networkmanager
+ avahi-daemon
 Description: AllStarLink Pi Appliance tools and configs
 	Not for use outside of ASL Pi appliances
