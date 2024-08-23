@@ -1,10 +1,23 @@
 {
+	"name": "wifimanager",
     "version": 0,
 
     "tools": {
-        "wifimgr": {
-            "label": "Wifi manager",
-            "path": "wifi.html"
+        "index": {
+            "label": "WiFi manager"
         }
-    }
+    },
+
+	 "bridges": [
+        {
+            "privileged": true,
+            "spawn": [
+                "pkexec",
+                "--disable-internal-agent",
+                "cockpit-bridge",
+                "--privileged"
+            ]
+        }
+    ]
+
 }

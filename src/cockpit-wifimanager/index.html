@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pinger</title>
+    <meta charset="utf-8">
+    <script src="../base1/cockpit.js"></script>
+	<link rel="stylesheet" type="text/css" href="wifi.css">
+</head>
+<body>
+	<header>
+		<h1>
+			<center>WiFi Network Management</center>
+		</h1>
+	</header>
+    <main>
+		<div id="scan-button">
+			<button id="wifi-scan">Scan for WiFi Networks</button>
+		</div>
+		<div id="scan-results" class="scan-results">
+			<i>No current scan</i>
+        </div>
+		<div id="set-wifi" class="set-wifi">
+				<h3>Add WiFi Network</h3>
+				<label for="wifi-ssid">Network Name:</label>
+				<input type="text" id="wifi-ssid" name="wifi-ssid" length=30></input><br>
+				<label for="wifi-key">Network Password:</label>
+				<input type="password" id="wifi-key" name="wifi-key" length=30></input><br>
+				<small><i>Note: Network password must be at least 8 characters per spec</i></small><br>
+				<button id="set-wifi">Save Network</button>
+				<div class="set-wifi-results"></div>
+		<div>
+    </main>
+    <script src="wifi.js"></script>
+</body>
+</html>
