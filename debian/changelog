@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.8.1-1) stable; urgency=medium
+
+  * Add cockpit-wifimanager 
+
+ -- Jason McCormick <jason@mfamily.org>  Thu, 03 Oct 2024 19:01:29 -0400
+
 asl3-pi-appliance (1.8.0-1) stable; urgency=medium
 
   * Relocate sa818 and sa818-menu to asl3 package

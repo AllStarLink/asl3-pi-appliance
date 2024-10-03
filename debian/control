@@ -12,7 +12,7 @@ Rules-Requires-Root: binary-targets
 Package: asl3-pi-appliance
 Architecture: all
 Depends: ${misc:Depends}, cockpit, cockpit-networkmanager,
- cockpit-packagekit, cockpit-sosreport, 
+ cockpit-packagekit, cockpit-sosreport, cockpit-wifimanager,
  cockpit-storaged, cockpit-system, cockpit-ws, python3-serial, firewalld,
  asl3 (>= 3.3.0), asl3-menu, asl3-update-nodelist, allmon3, vim-nox, avahi-daemon
 Description: AllStarLink Pi Appliance tools and configs
