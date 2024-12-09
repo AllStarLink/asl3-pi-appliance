@@ -16,6 +16,7 @@
 # the debian-policy package
 #
 set -e
+set -x
 
 if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
     . /usr/share/apache2/apache2-maintscript-helper
@@ -45,9 +46,12 @@ do_configure() {
 		firewall-cmd --zone=allstarlink --permanent --add-service=echolink
 		firewall-cmd --zone=allstarlink --add-service=echolink
 	else
+		set +e
 		firewall-offline-cmd --set-default-zone=allstarlink
 		firewall-offline-cmd --zone=allstarlink --add-service=echolink
 	fi
+
+	set -e
 
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
@@ -97,6 +101,26 @@ EOF
 	PLATFORM=$(grep -E '^Model' /proc/cpuinfo | awk '{print $3$4}')
 	if [ "${PLATFORM}" == "RaspberryPi" ]; then
 		/usr/bin/asl-enable-pi-serial
+	fi
+
+	# Cleanup /etc/rc.local from 3.0.15
+	if `grep -q POSTROUTING /etc/rc.local > /dev/null 2>&1`; then
+		echo "exit 0" > /etc/rc.local
+	fi
+
+	[ -f /boot/firmware/wifi.nmconnection ] && rm -f /boot/firmware/wifi.nmconnection
+	[ -f /boot/wifi.nmconnection ] && rm -f /boot/wifi.nmconnection
+	[ -f /etc/NetworkManager/system-connections/wifi.nmconnection ] && \
+		rm -f /etc/NetworkManager/system-connections/wifi.nmconnection
+
+	if [ -f /opt/custompios/copy-network-manager-config ]; then
+		rm -f /opt/custompios/copy-network-manager-config
+	fi
+
+	if [ -f /etc/systemd/system/copy-network-manager-config\@.service ]; then
+		deb-systemd-invoke stop copy-network-manager-config@wlan0.service
+		deb-systemd-invoke disable copy-network-manager-config@wlan0.service
+		rm -f /etc/systemd/system/copy-network-manager-config\@.service
 	fi
 }
 
