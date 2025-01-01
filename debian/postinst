@@ -16,7 +16,6 @@
 # the debian-policy package
 #
 set -e
-set -x
 
 if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
     . /usr/share/apache2/apache2-maintscript-helper
