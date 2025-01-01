@@ -104,8 +104,24 @@ EOF
 	fi
 
 	# Cleanup /etc/rc.local from 3.0.15
-	if `grep -q POSTROUTING /etc/rc.local > /dev/null 2>&1`; then
-		echo "exit 0" > /etc/rc.local
+	if [ -f /etc/rc.local ]; then
+
+		# does this have the broken POSTROUTING iptables statement? If so, delete.
+		if `grep -q POSTROUTING /etc/rc.local > /dev/null 2>&1`; then
+			echo "Deleting corrupted /etc/rc.local from ASL3 image 3.0.15"
+			rm -f /etc/rc.local
+		fi
+
+		# does this have the one-liner created by asl3-pi-appliance? If so, delete.
+		if [ $(wc -l /etc/rc.local | awk '{print $1}') -eq 1 ]; then
+			echo "Deleting corrupted /etc/rc.local from asl3-pi-appliance 1.9.0"
+			rm -f /etc/rc.local
+		fi
+	fi
+
+	if [ -f /etc/rc.local ]; then
+		echo "WARNING!! /etc/rc.local found!"
+		echo "Please read https://community.allstarlink.org/t/22604 carefully!"
 	fi
 
 	[ -f /boot/firmware/wifi.nmconnection ] && rm -f /boot/firmware/wifi.nmconnection
