@@ -1,3 +1,9 @@
+asl3-pi-appliance (1.9.0-5) stable; urgency=medium
+
+  * additional postinst fixes for cleaning up /etc/rc.local
+
+ -- Jason McCormick <jason@mfamily.org>  Wed, 01 Jan 2025 14:54:58 -0500
+
 asl3-pi-appliance (1.9.0-3) stable; urgency=medium
 
   * Unwind some stuff from 3.0.14/.15
