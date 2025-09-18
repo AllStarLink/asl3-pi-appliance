@@ -137,6 +137,10 @@ EOF
 		deb-systemd-invoke disable copy-network-manager-config@wlan0.service
 		rm -f /etc/systemd/system/copy-network-manager-config\@.service
 	fi
+
+	# Cleanup broken cruft from CustomPiOS - https://github.com/AllStarLink/asl3-pi-appliance/issues/22
+	perl -pi -e 's/^IPQoS\s+0x00$//' /etc/ssh/sshd_config
+	deb-systemd-invoke restart ssh
 }
 
 case "$1" in
