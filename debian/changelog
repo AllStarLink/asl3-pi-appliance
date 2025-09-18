@@ -1,3 +1,10 @@
+asl3-pi-appliance (1.10.1-1) stable; urgency=medium
+
+  * Add hook in postinst to fix CustomPiOS-introduced 
+    broken configuration in /etc/ssh/ssh_config
+
+ -- Jason McCormick <jason@mfamily.org>  Thu, 18 Sep 2025 10:18:52 -0400
+
 asl3-pi-appliance (1.10.0-1) stable; urgency=medium
 
   * Move python3-serial package dependency (from asl3-pi-appliance to asl3) (#18) 
