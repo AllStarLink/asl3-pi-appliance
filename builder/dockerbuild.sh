@@ -95,7 +95,7 @@ docker build -f $DIR/Dockerfile -t $D_TAG \
 docker run -v $ALL_PKG_ROOT:/build $D_TAG
 
 DEBIAN_FRONTEND=noninteractive apt-get -y install gh
-gh release upload -R ${GH_REPO_NAME} $GH_REL $ALL_PKG_ROOT/_debs/*.deb
+gh release upload --clobber -R ${GH_REPO_NAME} $GH_REL $ALL_PKG_ROOT/_debs/*.deb
 
 docker image rm --force $D_TAG
 
