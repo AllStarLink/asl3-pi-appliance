@@ -23,61 +23,12 @@ fi
 
 do_configure() {
 
-	#Apache Management
-    if [ -e /usr/sbin/apache2 ]; then
-        apache2_invoke enmod ssl || exit $?
-        apache2_invoke ensite default-ssl || exit $?
-		apache2_invoke enmod headers || exit $?
-		apache2_invoke enconf nocache || exit $?
-    fi
-
-	# Services to start on boot
-	deb-systemd-invoke enable apache2
-	deb-systemd-invoke enable allmon3
-	deb-systemd-invoke enable asterisk
-	deb-systemd-invoke enable firewalld
-	deb-systemd-invoke enable cockpit.socket
-
-	# Change default firewalld zone
-	if [ "$(firewall-cmd --state)" = "running" ]; then
-		deb-systemd-invoke reload firewalld
-		firewall-cmd --set-default-zone=allstarlink
-		firewall-cmd --zone=allstarlink --permanent --add-service=echolink
-		firewall-cmd --zone=allstarlink --add-service=echolink
-	else
-		set +e
-		firewall-offline-cmd --set-default-zone=allstarlink
-		firewall-offline-cmd --zone=allstarlink --add-service=echolink
-	fi
-
-	set -e
-
 	# Setup avahi-daemon
 	perl -pi -e 's/^publish-workstation=[A-Za-z]+\s?$/publish-workstation=yes\n/' /etc/avahi/avahi-daemon.conf
 	perl -pi -e 's/^publish-hinfo=[A-Za-z]+\s?$/publish-hinfo=yes\n/' /etc/avahi/avahi-daemon.conf
 	rm -f /etc/avahi/services/http.service /etc/avahi/services/https.service /etc/avahi/services/cockpit.service
 	deb-systemd-invoke enable avahi-daemon
 	deb-systemd-invoke restart avahi-daemon
-
-	# Rewrite the motd
-	cat - > /etc/motd <<EOF
-
-            Welcome to AllStarLink v3
-
- * A CLI menu is accessible by typing 'sudo asl-menu'
- * The Asterisk CLI is accessible by typing 'sudo asterisk -rv'
- * An online manual is located at https://allstarlink.github.io
- * Package updates are obtained through the Cockpit web
-   console or by typing 'sudo apt update && sudo apt upgrade -y'
- * This system uses firewalld. Ports are controlled in the
-   Cockpit web console or by using the command:
-     'sudo firewall-cmd -p PORT:TYPE'
- * For help, visit https://community.allstarlink.org
-
-EOF
-
-	# Customize /etc/os-release
-	/usr/share/cockpit/branding/debian-AllStarLink/fix-os-release
 
 	# Customize dphys-swapfile if its installed
 	if [ -f /etc/dphys-swapfile ]; then
