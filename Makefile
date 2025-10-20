@@ -3,20 +3,16 @@
 #
 SRCNAME 	= asl3-pi-appliance
 PKGNAME 	= $(SRCNAME)
-RELVER 		= 1.10.1
-DEBVER 		= 1
+RELVER 		= 2.0.0
+DEBVER 		= 0.alpha0
 RELPLAT 	?= deb$(shell lsb_release -rs 2> /dev/null)
 
 prefix          ?= /usr
 docdir			?= $(prefix)/share/doc/$(PKGNAME)
 
 BUILDABLES = \
-	apache2 \
 	avahi \
-	bin \
-	cockpit \
-	firewalld \
-	web
+	bin 
 
 #ifdef DESTDIR
 FULL_DESTDIR = $(shell readlink -f $(DESTDIR))
