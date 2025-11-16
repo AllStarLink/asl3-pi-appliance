@@ -8,7 +8,6 @@ on:
         type: choice
         options:
           - bookworm
-          - trixie
       gh-rel:
         description: 'GitHub Release Tag (for debs)'
         type: string
